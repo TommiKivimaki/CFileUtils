@@ -12,7 +12,7 @@ Add this package and make your target depend on it
 let package = Package(
   name: "Cool-SPM-Project",
   dependencies: [
-    .package(url: "../DirectoryExistsLinux", .branch("master"))
+    .package(url: "https://github.com/TommiKivimaki/DirectoryExistsLinux", .branch("master"))
   ],
   targets: [
     .target(
