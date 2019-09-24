@@ -22,3 +22,14 @@ let package = Package(
 )
   ```
   
+  
+  ## Running test suite on Linux
+  
+  Build a Docker image
+  ```docker build -t directory-exists-linux-test .``` 
+  
+  Run the test
+  ```docker run --rm directory-exists-linux-test```
+  
+  
+  
