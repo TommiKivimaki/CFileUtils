@@ -4,6 +4,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-bool directoryExistsLinux(char *path);
+bool directoryExistsLinux(const char *path);
 
 #endif

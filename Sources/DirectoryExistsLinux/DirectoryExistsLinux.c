@@ -3,7 +3,7 @@
 #include "include/DirectoryExistsLinux.h"
 
 
-bool directoryExistsLinux(char *path) {
+bool directoryExistsLinux(const char *path) {
   struct stat s;
   int result = stat(path, &s);
   
