@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include <sys/stat.h>
 #include "include/DirectoryExistsLinux.h"
 
