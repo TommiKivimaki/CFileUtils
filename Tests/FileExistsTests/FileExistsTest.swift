@@ -5,47 +5,49 @@ import Foundation
 final class FileExistsTests: XCTestCase {
   var fileManager: FileManager?
   var currentPath: String?
+  var filePath: String!
   
   override func setUp() {
     fileManager = FileManager.default
     currentPath = fileManager!.currentDirectoryPath
+    
+    let dummyContent = "dummy content".data(using: .utf8)
+    filePath = currentPath! + "/testfile"
+    fileManager!.createFile(atPath: filePath, contents: dummyContent, attributes: nil)
   }
   
   override func tearDown() {
     fileManager = nil
   }
 
-  func testWithExistingDirectory() {
-//    let path = UnsafeMutablePointer<Int8>(mutating: (currentPath! as NSString).utf8String)
-//    let isDirectory = directoryExistsLinux(path)
-//
-//    XCTAssertTrue(isDirectory)
+  func testWithExistingFile() {
+    let fmFileExists = fileManager!.fileExists(atPath: filePath)
+    let isFile = fileExists(filePath)
+
+    XCTAssertTrue(fmFileExists)
+    XCTAssertTrue(isFile)
   }
-//
-//  func testWithNotExistingDirectory() {
-//    let fakePath = currentPath! + "/foobar"
-//    let isDirectory = directoryExistsLinux(fakePath)
-//
-//    XCTAssertFalse(isDirectory)
-//  }
-//
-//  func testWithPathToFile() {
-//    let dummyContent = "dummy content".data(using: .utf8)
-//    let filePath = currentPath! + "/testfile"
-//    fileManager!.createFile(atPath: filePath, contents: dummyContent, attributes: nil)
-//
-//    let fileExists = fileManager!.fileExists(atPath: filePath)
-//    let isDirectory = directoryExistsLinux(filePath)
-//
-//    XCTAssertTrue(fileExists)
-//    XCTAssertFalse(isDirectory)
-//  }
   
+  func testWithNonExistingFile() {
+    let nonExistingPath = filePath + "/foo"
+    let fmFileExists = fileManager!.fileExists(atPath: nonExistingPath)
+    let isFile = fileExists(nonExistingPath)
+    
+    XCTAssertFalse(fmFileExists)
+    XCTAssertFalse(isFile)
+  }
+  
+  func testWithDirectory() {
+    let path = UnsafeMutablePointer<Int8>(mutating: (currentPath! as NSString).utf8String)
+    let isFile = fileExists(path)
+    
+    XCTAssertFalse(isFile)
+  }
   
   static var allTests = [
-    ("testWithExistingDirectory", testWithExistingDirectory),
-//    ("testWithNotExistingDirectory", testWithNotExistingDirectory),
-//    ("testWithPathToFile", testWithPathToFile)
+    ("testWithExistingFile", testWithExistingFile),
+    ("testWithNonExistingFile", testWithNonExistingFile)
+    ("testWithDirectory", testWithDirectory)
   ]
 
 }
