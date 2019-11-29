@@ -1,8 +1,8 @@
-# DirectoryExistsLinux
+# CFileUtils
 
 [swift-corelibs-foundation](https://github.com/apple/swift-corelibs-foundation) does not have the `fileExists(atPath:, isDirectory:)` implementation, since it requires Objective-C runtime. 
 
-This package provides a simple API to check if a directory exists in Linux. The functionality is implemented on C. 
+This package provides a simple API to check if a directory or a file exists. The functionality is implemented on C. 
 
 ## Usage
 
@@ -12,12 +12,12 @@ Add this package and make your target depend on it
 let package = Package(
   name: "Cool-SPM-Project",
   dependencies: [
-    .package(url: "https://github.com/TommiKivimaki/DirectoryExistsLinux", .branch("master"))
+    .package(url: "https://github.com/TommiKivimaki/CFileUtils", .branch("master"))
   ],
   targets: [
     .target(
       name: "Cool-SPM-Project",
-      dependencies: ["DirectoryExistsLinux"])
+      dependencies: ["CFileUtils"])
   ]
 )
   ```
@@ -26,10 +26,10 @@ let package = Package(
   ## Running test suite on Linux
   
   Build a Docker image
-  ```docker build -t directory-exists-linux-test .``` 
+  ```docker build -t cfileutils-tests .``` 
   
   Run the test
-  ```docker run --rm directory-exists-linux-test```
+  ```docker run --rm cfileutils-tests```
   
   
   

@@ -1,8 +1,9 @@
 import XCTest
 
-import DirectoryExistsLinuxTests
+import DirectoryExistsTests
+import FileExistsTests
 
 var tests = [XCTestCaseEntry]()
-tests += DirectoryExistsLinuxTests.allTests()
+tests += DirectoryExistsTests.allTests()
 tests += FileExistsTests.allTests()
 XCTMain(tests)

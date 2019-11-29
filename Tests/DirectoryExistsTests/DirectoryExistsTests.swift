@@ -1,8 +1,8 @@
 import XCTest
 import Foundation
-@testable import DirectoryExistsLinux
+@testable import DirectoryExists
 
-final class DirectoryExistsLinuxTests: XCTestCase {
+final class DirectoryExistsTests: XCTestCase {
   var fileManager: FileManager?
   var currentPath: String?
   
@@ -17,14 +17,14 @@ final class DirectoryExistsLinuxTests: XCTestCase {
   
   func testWithExistingDirectory() {
     let path = UnsafeMutablePointer<Int8>(mutating: (currentPath! as NSString).utf8String)
-    let isDirectory = directoryExistsLinux(path)
+    let isDirectory = directoryExists(path)
     
     XCTAssertTrue(isDirectory)
   }
   
   func testWithNotExistingDirectory() {
     let fakePath = currentPath! + "/foobar"
-    let isDirectory = directoryExistsLinux(fakePath)
+    let isDirectory = directoryExists(fakePath)
     
     XCTAssertFalse(isDirectory)
   }
@@ -35,7 +35,7 @@ final class DirectoryExistsLinuxTests: XCTestCase {
     fileManager!.createFile(atPath: filePath, contents: dummyContent, attributes: nil)
 
     let fileExists = fileManager!.fileExists(atPath: filePath)
-    let isDirectory = directoryExistsLinux(filePath)
+    let isDirectory = directoryExists(filePath)
     
     XCTAssertTrue(fileExists)
     XCTAssertFalse(isDirectory)

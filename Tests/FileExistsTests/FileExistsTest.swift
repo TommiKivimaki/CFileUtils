@@ -46,7 +46,7 @@ final class FileExistsTests: XCTestCase {
   
   static var allTests = [
     ("testWithExistingFile", testWithExistingFile),
-    ("testWithNonExistingFile", testWithNonExistingFile)
+    ("testWithNonExistingFile", testWithNonExistingFile),
     ("testWithDirectory", testWithDirectory)
   ]
 

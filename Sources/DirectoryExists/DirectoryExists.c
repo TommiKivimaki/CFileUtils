@@ -1,7 +1,7 @@
 #include <sys/stat.h>
-#include "include/DirectoryExistsLinux.h"
+#include "include/DirectoryExists.h"
 
-bool directoryExistsLinux(const char *path) {
+bool directoryExists(const char *path) {
   struct stat s;
   int result = stat(path, &s);
   

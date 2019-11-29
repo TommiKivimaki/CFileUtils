@@ -4,24 +4,24 @@
 import PackageDescription
 
 let package = Package(
-  name: "DirectoryExistsLinux",
+  name: "CFileUtils",
   products: [
     .library(
-      name: "DirectoryExistsLinux",
-      targets: ["DirectoryExistsLinux", "FileExists"]),
+      name: "CFileUtils",
+      targets: ["DirectoryExists", "FileExists"]),
   ],
   dependencies: [
   ],
   targets: [
     .target(
-      name: "DirectoryExistsLinux",
+      name: "DirectoryExists",
       dependencies: []),
     .target(
       name: "FileExists",
       dependencies: []),
     .testTarget(
-      name: "DirectoryExistsLinuxTests",
-      dependencies: ["DirectoryExistsLinux"]),
+      name: "DirectoryExistsTests",
+      dependencies: ["DirectoryExists"]),
     .testTarget(
       name: "FileExistsTests",
       dependencies: ["FileExists"])
