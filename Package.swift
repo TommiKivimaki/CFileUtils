@@ -8,7 +8,7 @@ let package = Package(
   products: [
     .library(
       name: "DirectoryExistsLinux",
-      targets: ["DirectoryExistsLinux"]),
+      targets: ["DirectoryExistsLinux", "FileExists"]),
   ],
   dependencies: [
   ],
@@ -16,8 +16,14 @@ let package = Package(
     .target(
       name: "DirectoryExistsLinux",
       dependencies: []),
+    .target(
+      name: "FileExists",
+      dependencies: []),
     .testTarget(
       name: "DirectoryExistsLinuxTests",
       dependencies: ["DirectoryExistsLinux"]),
+    .testTarget(
+      name: "FileExistsTests",
+      dependencies: ["FileExists"])
   ]
 )
